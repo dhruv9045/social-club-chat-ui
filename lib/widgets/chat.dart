@@ -1,3 +1,6 @@
+import 'dart:ui';
+
+import 'package:chat_app_/screens/chat_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_neumorphic/flutter_neumorphic.dart';
 import 'package:get/get.dart';
@@ -11,6 +14,7 @@ class chat extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+      final Message chat = chats[index!];
     return Padding(
       padding: const EdgeInsets.only(left: 11.0, right: 11.0),
       child: Container(
@@ -24,15 +28,14 @@ class chat extends StatelessWidget {
             //       chats[index!.toInt()].sender!.imageUrl.toString()),
             // ),
             Container(
-                height: 75,
-                    width: 80,
+              height: 75,
+              width: 80,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(20), // Image border
                 child: SizedBox.fromSize(
                   size: Size.fromRadius(45), // Image radius
                   child: Image.network(
                       chats[index!.toInt()].sender!.imageUrl.toString(),
-                    
                       fit: BoxFit.cover),
                 ),
               ),
@@ -107,24 +110,28 @@ class chat extends StatelessWidget {
                   //   height: 10,
                   // ),
                   Container(
-                    child:
-                        NeumorphicButton(
-  style: NeumorphicStyle(
-          depth: 10,
-          shadowLightColorEmboss: Colors.white,
-          shadowDarkColorEmboss: Colors.black,
-          color: Colors.white,
-          boxShape: NeumorphicBoxShape.roundRect(BorderRadius.circular(15)),
-          intensity: 0.7,
-          disableDepth: false,
-          shape: NeumorphicShape.concave,
-          lightSource: LightSource.left,
-          border: NeumorphicBorder(
-            width: 2,
-            color: Colors.white24,
-          )),
-                          onPressed: () {}, 
-                          child: Text('Join')),
+                    child: NeumorphicButton(
+                        style: NeumorphicStyle(
+                            depth: 10,
+                            shadowLightColorEmboss: Colors.white,
+                            shadowDarkColorEmboss: Colors.black,
+                            color: Colors.white,
+                            boxShape: NeumorphicBoxShape.roundRect(
+                                BorderRadius.circular(15)),
+                            intensity: 0.7,
+                            disableDepth: false,
+                            shape: NeumorphicShape.concave,
+                            lightSource: LightSource.left,
+                            border: NeumorphicBorder(
+                              width: 2,
+                              color: Colors.white24,
+                            )),
+                        onPressed: () {
+                          Get.to(ChatScreen(
+                            user: chat.sender,
+                          ));
+                        },
+                        child: Text ('Join')),
                   )
                 ],
               ),

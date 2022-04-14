@@ -1,4 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:chat_app_/models/message_model.dart';
 import 'package:chat_app_/screens/add_group.dart';
 import 'package:chat_app_/screens/groupparticipantsselection.dart';
 import 'package:chat_app_/widgets/chat.dart';
@@ -65,77 +66,81 @@ class _groupscreenState extends State<groupscreen> {
   @override
   Widget build(BuildContext context) {
     return Container(
+      color: Colors.white,
       height: Get.height * .9,
       child: Column(
         children: [
-          const SizedBox(height: 20),
+          const SizedBox(height: 14),
           AnimatedOpacity(
-            duration: const Duration(milliseconds: 200),
+            duration: const Duration(milliseconds: 300),
             opacity: closeTopContainer ? 0 : 1,
             child: AnimatedContainer(
               alignment: Alignment.topCenter,
               height: closeTopContainer ? 0 : Get.height * 0.20,
-              duration: const Duration(milliseconds: 2000),
+              duration: const Duration(milliseconds: 1000),
               width: Get.width,
               child: CarouselSlider(
                 options: CarouselOptions(
                   height: 140.0,
-                  enlargeCenterPage: false,
+                  enlargeCenterPage: true,
                   viewportFraction: 0.5,
                 ),
                 items: items.map((i) {
                   return Builder(
                     builder: (BuildContext context) {
-                      return Container(
-                        height: 100,
-                        width: MediaQuery.of(context).size.width / 2,
-                        margin: const EdgeInsets.symmetric(horizontal: 5.0),
-                        decoration: BoxDecoration(
-                            color: Color(colors.elementAt(items.indexOf(i))),
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: const [
-                              BoxShadow(
-                                  color: Colors.white10,
-                                  offset: Offset(5.0, 5.0),
-                                  blurRadius: 15.0,
-                                  spreadRadius: 1.0),
-                              BoxShadow(
-                                  color: Colors.white10,
-                                  offset: Offset(-5.0, -5.0),
-                                  blurRadius: 15.0,
-                                  spreadRadius: 1.0),
-                            ]),
-                        child: Stack(
-                          children: [
-                            Positioned.fill(
-                              child: Container(
-                                height: 75,
-                                width: 80,
-                                child: ClipRRect(
-                                  borderRadius:
-                                      BorderRadius.circular(20), // Image border
-                                  child: SizedBox.fromSize(
-                                    size: Size.fromRadius(45), // Image radius
-                                    child: Image.network(
-                                        imgList.elementAt(items.indexOf(i)),
-                                        fit: BoxFit.cover),
+                      return InkWell(
+                        onTap: () {},
+                        child: Container(
+                          height: 100,
+                          width: MediaQuery.of(context).size.width / 2,
+                          margin: const EdgeInsets.symmetric(horizontal: 5.0),
+                          decoration: BoxDecoration(
+                              color: Color(colors.elementAt(items.indexOf(i))),
+                              borderRadius: BorderRadius.circular(12),
+                              boxShadow: const [
+                                BoxShadow(
+                                    color: Colors.white10,
+                                    offset: Offset(5.0, 5.0),
+                                    blurRadius: 15.0,
+                                    spreadRadius: 1.0),
+                                BoxShadow(
+                                    color: Colors.white10,
+                                    offset: Offset(-5.0, -5.0),
+                                    blurRadius: 15.0,
+                                    spreadRadius: 1.0),
+                              ]),
+                          child: Stack(
+                            children: [
+                              Positioned.fill(
+                                child: Container(
+                                  height: 75,
+                                  width: 80,
+                                  child: ClipRRect(
+                                    borderRadius: BorderRadius.circular(
+                                        20), // Image border
+                                    child: SizedBox.fromSize(
+                                      size: Size.fromRadius(45), // Image radius
+                                      child: Image.network(
+                                          imgList.elementAt(items.indexOf(i)),
+                                          fit: BoxFit.cover),
+                                    ),
                                   ),
                                 ),
                               ),
-                            ),
-                            Positioned(
-                              bottom: 8.0,
-                              left: 8.0,
-                              child: Text(
-                                i,
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 15,
-                                  fontWeight: FontWeight.w500,
+                              Positioned(
+                                bottom: 8.0,
+                                left: 8.0,
+                                child: Text(
+                                  i,
+                                  style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 15,
+                                    fontWeight: FontWeight.w500,
+                                  ),
                                 ),
                               ),
-                            ),
-                          ],
+                            ],
+                          ),
                         ),
                       );
                       // Stack(
@@ -194,7 +199,6 @@ class _groupscreenState extends State<groupscreen> {
             // SizedBox(height: 20),
           ),
           Expanded(
-
               // height: Get.height/2,
               child: ListView(
             controller: controller,
@@ -214,7 +218,8 @@ class _groupscreenState extends State<groupscreen> {
                 index: e,
               );
             }).toList(),
-          ))
+          )),
+          const SizedBox(height: 50),
         ],
       ),
     );

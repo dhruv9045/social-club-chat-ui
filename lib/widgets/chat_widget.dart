@@ -8,8 +8,8 @@ class chatwidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: Get.height,
-      color: Colors.grey[50],
+      height: Get.height*.82,
+      color: Colors.white,
       child: ListView.builder(
         physics: BouncingScrollPhysics(),
           itemCount: chats.length,
@@ -20,7 +20,7 @@ class chatwidget extends StatelessWidget {
                 user: chat.sender,
               )),
               child: Padding(
-                padding: const EdgeInsets.all(8.0),
+                padding: const EdgeInsets.only(right:8.0,left:8.0,bottom:0.0,top:14.0),
                 child: Neumorphic(
                   style: const NeumorphicStyle(
                       // depth: 10,
@@ -37,7 +37,7 @@ class chatwidget extends StatelessWidget {
                       )),
                   child: Container(
                     color: Colors.white,
-                    height: Get.height /12,
+                    height: Get.height /14,
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                       children: [

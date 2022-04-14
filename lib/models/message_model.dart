@@ -115,6 +115,20 @@ List<Message> chats = [
     isLiked: false,
     unread: false,
   ),
+   Message(
+    sender: james,
+    time: '5:30 PM',
+    text: 'Hey, how\'s it going? are you fine',
+    isLiked: false,
+    unread: true,
+  ),
+   Message(
+    sender: james,
+    time: '5:30 PM',
+    text: 'Hey, how\'s it going? are you fine',
+    isLiked: false,
+    unread: true,
+  ),
   Message(
     sender: greg,
     time: '11:30 AM',

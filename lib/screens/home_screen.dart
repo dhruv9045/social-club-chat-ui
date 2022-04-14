@@ -124,17 +124,26 @@ class _homescreenState extends State<homescreen> with TickerProviderStateMixin {
           //         bottomLeft: Radius.circular(22),
           //         bottomRight: Radius.circular(22))),
           elevation: 0.0,
-          //shadowColor: Colors.white70,
+          // shadowColor: Colors.white70,
           // shadowColor: Colors.grey.shade300,
           bottom: TabBar(
+              indicator: BoxDecoration(
+                  borderRadius: BorderRadius.circular(
+                    25.0,
+                  ),
+                  color: Color(0xff0088CC),
+                ),
               controller: _tabController,
+              labelColor:Colors.white,
               unselectedLabelColor:Colors.grey,
-              indicatorColor: Colors.black,
+              
+              // indicatorColor: Colors.black,
               tabs: [
                 Tab(
                   child: Text(
                     "Messages",
-                    style: TextStyle(fontSize: 16, color: Colors.black
+                    style: TextStyle(fontSize: 16, 
+                    // color: Colors.black
                         // color: Color(0xff0088CC),
                         ),
                   ),
@@ -143,7 +152,8 @@ class _homescreenState extends State<homescreen> with TickerProviderStateMixin {
                 Tab(
                   child: Text(
                     "Groups",
-                    style: TextStyle(fontSize: 16, color: Colors.black
+                    style: TextStyle(fontSize: 16, 
+                    // color: Colors.black
                         // color: Color(0xff0088CC),
                         ),
                   ),
@@ -185,6 +195,7 @@ class _homescreenState extends State<homescreen> with TickerProviderStateMixin {
           // ),
         ),
         body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
           controller: _tabController, children: [
           SingleChildScrollView(
             child: Column(
